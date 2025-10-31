@@ -1,0 +1,108 @@
+### API REST - Vitalis Pulse
+### Arquivo para testar as rotas com REST Client (VS Code Extension)
+
+@baseUrl = http://localhost:3000
+
+# ====================================================
+# COMPANIES
+# ====================================================
+
+### Listar todas as empresas
+GET {{baseUrl}}/companies
+
+### Buscar empresa por ID
+GET {{baseUrl}}/companies/10
+
+### Criar nova empresa
+POST {{baseUrl}}/companies
+Content-Type: application/json
+
+{
+  "name": "Nova Empresa LTDA",
+  "domain": "novaempresa.com.br"
+}
+
+### Atualizar empresa
+PATCH {{baseUrl}}/companies/1
+Content-Type: application/json
+
+{
+  "name": "TechCorp Solutions Updated",
+  "domain": "techcorp-updated.com"
+}
+
+### Atualizar apenas o nome
+PATCH {{baseUrl}}/companies/1
+Content-Type: application/json
+
+{
+  "name": "TechCorp Solutions - New Name"
+}
+
+### Deletar empresa
+DELETE {{baseUrl}}/companies/3
+
+# ====================================================
+# USERS
+# ====================================================
+
+### Listar todos os usuários
+GET {{baseUrl}}/users
+
+### Buscar usuário por ID
+GET {{baseUrl}}/users/1
+
+### Criar novo usuário
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "email": "novo.usuario@techcorp.com",
+  "name": "Novo Usuário",
+  "password": "senha123",
+  "role": "EMPLOYEE",
+  "companyId": 1
+}
+
+### Atualizar usuário
+PATCH {{baseUrl}}/users/1
+Content-Type: application/json
+
+{
+  "name": "Carlos Silva Atualizado",
+  "isActive": true
+}
+
+### Deletar usuário
+DELETE {{baseUrl}}/users/6
+
+# ====================================================
+# INVITATIONS
+# ====================================================
+
+### Listar todos os convites
+GET {{baseUrl}}/invitations
+
+### Buscar convite por ID
+GET {{baseUrl}}/invitations/1
+
+### Criar novo convite
+POST {{baseUrl}}/invitations
+Content-Type: application/json
+
+{
+  "email": "convidado@example.com",
+  "role": "EMPLOYEE",
+  "companyId": 1
+}
+
+### Atualizar convite
+PATCH {{baseUrl}}/invitations/1
+Content-Type: application/json
+
+{
+  "status": "ACCEPTED"
+}
+
+### Deletar convite
+DELETE {{baseUrl}}/invitations/3
