@@ -36,7 +36,7 @@ export class CompaniesService {
       include: {
         _count: {
           select: {
-            users: true,
+            employees: true,
             surveys: true,
           },
         },
@@ -48,7 +48,7 @@ export class CompaniesService {
     const company = await this.prisma.company.findUnique({
       where: { id },
       include: {
-        users: true,
+        employees: true,
         surveys: true,
         invitations: true,
       },
