@@ -16,7 +16,7 @@ async function main() {
   await prisma.surveyQuestion.deleteMany();
   await prisma.survey.deleteMany();
   await prisma.invitation.deleteMany();
-  await prisma.user.deleteMany();
+  await prisma.employee.deleteMany();
   await prisma.company.deleteMany();
 
   // ======================================================
@@ -48,11 +48,11 @@ async function main() {
   console.log(`✅ ${3} empresas criadas`);
 
   // ======================================================
-  // 2. CRIAR USUÁRIOS
+  // 2. CRIAR FUNCIONÁRIOS
   // ======================================================
-  console.log('👥 Criando usuários...');
+  console.log('👥 Criando funcionários...');
 
-  const admin1 = await prisma.user.create({
+  const admin1 = await prisma.employee.create({
     data: {
       email: 'admin@techcorp.com',
       name: 'Carlos Silva',
@@ -62,7 +62,7 @@ async function main() {
     },
   });
 
-  const manager1 = await prisma.user.create({
+  const manager1 = await prisma.employee.create({
     data: {
       email: 'manager@techcorp.com',
       name: 'Maria Santos',
@@ -72,7 +72,7 @@ async function main() {
     },
   });
 
-  const employee1 = await prisma.user.create({
+  const employee1 = await prisma.employee.create({
     data: {
       email: 'joao.souza@techcorp.com',
       name: 'João Souza',
@@ -82,7 +82,7 @@ async function main() {
     },
   });
 
-  const employee2 = await prisma.user.create({
+  const employee2 = await prisma.employee.create({
     data: {
       email: 'ana.costa@techcorp.com',
       name: 'Ana Costa',
@@ -92,7 +92,7 @@ async function main() {
     },
   });
 
-  const admin2 = await prisma.user.create({
+  const admin2 = await prisma.employee.create({
     data: {
       email: 'admin@innovatehub.io',
       name: 'Pedro Oliveira',
@@ -102,7 +102,7 @@ async function main() {
     },
   });
 
-  const employee3 = await prisma.user.create({
+  const employee3 = await prisma.employee.create({
     data: {
       email: 'julia.almeida@innovatehub.io',
       name: 'Júlia Almeida',
@@ -112,7 +112,7 @@ async function main() {
     },
   });
 
-  console.log(`✅ ${6} usuários criados`);
+  console.log(`✅ ${6} funcionários criados`);
 
   // ======================================================
   // 3. CRIAR CONVITES
@@ -250,7 +250,7 @@ async function main() {
   await prisma.surveyResponse.create({
     data: {
       runId: run1.id,
-      userId: employee1.id,
+      employeeId: employee1.id,
       answers: {
         question_1: 8,
         question_2: true,
@@ -262,7 +262,7 @@ async function main() {
   await prisma.surveyResponse.create({
     data: {
       runId: run1.id,
-      userId: employee2.id,
+      employeeId: employee2.id,
       answers: {
         question_1: 9,
         question_2: true,
@@ -274,7 +274,7 @@ async function main() {
   await prisma.surveyResponse.create({
     data: {
       runId: run2.id,
-      userId: employee1.id,
+      employeeId: employee1.id,
       answers: {
         question_1: 7,
         question_2: false,
@@ -288,7 +288,7 @@ async function main() {
   console.log('\n✨ Seed concluído com sucesso!');
   console.log('\n📊 Resumo:');
   console.log(`   - ${3} empresas`);
-  console.log(`   - ${6} usuários`);
+  console.log(`   - ${6} funcionários`);
   console.log(`   - ${3} convites`);
   console.log(`   - ${2} pesquisas`);
   console.log(`   - ${2} rodadas`);

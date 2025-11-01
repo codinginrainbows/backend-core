@@ -44,14 +44,14 @@ model Company {
   updatedAt  DateTime  @updatedAt
 
   // Relacionamentos
-  users      User[]
+  employees      Employee[]
   invitations Invitation[]
   surveys     Survey[]
 }
 
 // ------------------------------------------------------
 
-model User {
+model Employee {
   id         Int       @id @default(autoincrement())
   email      String    @unique
   name       String?
@@ -133,8 +133,8 @@ model SurveyResponse {
   runId       Int
   run         SurveyRun @relation(fields: [runId], references: [id])
 
-  userId      Int
-  user        User      @relation(fields: [userId], references: [id])
+  employeeId      Int
+  employee        Employee      @relation(fields: [employeeId], references: [id])
 
   answers     Json      // respostas em JSON (perguntas x respostas)
   submittedAt DateTime  @default(now())
